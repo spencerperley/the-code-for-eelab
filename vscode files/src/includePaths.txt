@@ -1,0 +1,10 @@
+
+The include path keeps breakingb so if it doesent work coppy and paste this in there 
+
+"C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
+"C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\standard",
+"C:\\Program Files (x86)\\Arduino\\libraries\\LiquidCrystal\\src",
+"c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include",
+"c:\\Users\\Spencer\\Documents\\Arduino\\libraries\\IRremote\\src",
+"c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include-fixed",
+"c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\avr\\include"

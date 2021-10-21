@@ -7,7 +7,7 @@
 // This is in a heeder file because it is gross and big.
 // Also, I wanted to abstract it from the user.
 
-const int RECV_PIN = 2;
+const int RECV_PIN = 10;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
 

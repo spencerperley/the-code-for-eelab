@@ -7,7 +7,7 @@ void setup() {
   // Switch on the LCD screen
   lcd.begin(16, 2);
   // Print these words to my LCD screen
-  lcd.print("HELLO WORLD!");
+  lcd.print("HELLO Spencer!");
 }
 
 void loop() {

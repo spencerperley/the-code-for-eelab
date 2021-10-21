@@ -1,5 +1,5 @@
 {
-    "sketch": "src\\object_testing\\main.ino",
+    "sketch": "src\\LCD_Screen_Testing\\LCD_Test.ino",
     "board": "arduino:avr:uno",
     "port": "COM3",
     "programmer": "arduino:avrispmkii"

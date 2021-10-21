@@ -18,12 +18,11 @@
             "includePath": [
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\standard",
+                "C:\\Program Files (x86)\\Arduino\\libraries\\LiquidCrystal\\src",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include",
+                "c:\\Users\\Spencer\\Documents\\Arduino\\libraries\\IRremote\\src",
                 "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include-fixed",
-                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\avr\\include",
-                "c:\\Users\\Spencer\\Documents\\GitHub\the-code-for-eelab\\vscode files\\src\\object_testing",
-                "c:\\Program Files (x86)\\Arduino\\libraries",
-                "c:\\Program Files (x86)\\Arduino\\libraries\\Arduino-IRremote-master\\src"
+                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\avr\\include"
             ],
             "forcedInclude": [
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
