@@ -1,10 +1,10 @@
-#ifndef COMMON_DECLARATIONS_PROJECT //Header gaurd for this header file
+#ifndef COMMON_DECLARATIONS_PROJECT //Header guard for this header file
 #define COMMON_DECLARATIONS_PROJECT
 #pragma once
 
 //Global Variable Declarations
 long curentTime = 0;
-long previusTime = curentTime;
+long previousTime = curentTime;
 long loopTime = 0;
 int currentKey = 10;
 
@@ -15,7 +15,7 @@ enum programState
     SET_PASSWORD = 1,
     ENTER_PASSWORD = 2,
     PASSWORD_CORRECT = 3,
-    PASSWORD_INCORECT = 4,
+    PASSWORD_INCORRECT = 4,
     OFF = 5
 } state;
 
@@ -25,7 +25,7 @@ private:
     int pinNum;
     int blinkTimer;
     bool timerStarted;
-    bool blinkOcilator;
+    bool blinkOscillator;
     bool isOn;
     static int pinCount;
 
@@ -38,7 +38,7 @@ public:
     bool getState();
     void blinkLight(int blinkLength);
     void blinkLight(int onTime, int offTime);
-    void alocatePin();
+    void allocatePin();
     static int getPinCount();
 };
 
@@ -46,15 +46,15 @@ class Password
 {
 private:
     int indexOfEntered;
-    int enteredPassword[10] = {0};
-    int currentPassword[10] = {0};
+    int enteredPassword[10];
+    int currentPassword[10];
 
 public:
     Password();
 
     void setIndexOfEntered(int numEntries);
-    void setEnteredPassword(int imput);
-    void setCurrentPassword(int imput);
+    void setEnteredPassword(int input);
+    void setCurrentPassword(int input);
     int getIndexOfEntered();
     void printEnteredPassword();
     void printCurrentPassword();
@@ -62,5 +62,6 @@ public:
 };
 
 #include "projIR.hpp"
+
 
 #endif

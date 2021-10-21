@@ -16,11 +16,13 @@ int pinCount = DigitalPin::getPinCount();
 
 Password password;
 
+/*___________________________________________________________________________________________________*/
+
 void runLoopTime()
 {
-    previusTime = curentTime;
+    previousTime = curentTime;
     curentTime = millis();
-    loopTime = curentTime - previusTime;
+    loopTime = curentTime - previousTime;
 }
 
 //int state = 1;
@@ -31,29 +33,30 @@ void setup() // This is the function to settup the arduino
 {
     for (int i = 0; i < (pinCount + 1); i++)
     {
-        lightContainer[i].alocatePin();
+        lightContainer[i].allocatePin();
     }
     irrecv.enableIRIn();
     Serial.begin(9600);
 
     state = START_UP;
 
-} // End brakets indicate end of settup function
+} // End brackets indicate end of settup function
 
 /*___________________________________________________________________________________________________*/
 
 void loop() // Start the main loop
 {
-#if true //Preprosseser derective used for debuging
-
+#if true //Preprosseser directive used for debuging
 
     if (state == OFF)
     {
         runLoopTime();
     }
 
-    switch (state)
+    switch (state) //This is the state 
     {
+
+/*___________________________________________________________________________________________________*/
 
     case START_UP: // if the program is in the START_UP state
 
@@ -69,15 +72,17 @@ void loop() // Start the main loop
             delay(100);
         }
         password.setIndexOfEntered(0);
-        
+
         blue.turnOn();
 
         state = SET_PASSWORD;
 
+/*___________________________________________________________________________________________________*/
+
     case SET_PASSWORD: // if the program is in the SET_PASSWORD state
 
         currentKey = getKey();
-        if (currentKey != 10)
+        if (currentKey != 10) //Waiting for an acceptable key press
         {
             if (currentKey == 11)
             {
@@ -87,7 +92,7 @@ void loop() // Start the main loop
                 break;
             }
             password.setEnteredPassword(currentKey);
-
+            password.printEnteredPassword();
             if (password.getIndexOfEntered() >= 10)
             {
                 password.setIndexOfEntered(0);
@@ -97,6 +102,8 @@ void loop() // Start the main loop
             }
         }
         break;
+
+/*___________________________________________________________________________________________________*/
 
     case ENTER_PASSWORD: // if the program is in the ENTER_PASSWORD state
 
@@ -120,7 +127,7 @@ void loop() // Start the main loop
                 }
                 if (!(password.passwordsMatch()))
                 {
-                    state = PASSWORD_INCORECT;
+                    state = PASSWORD_INCORRECT;
                 }
 
                 white.turnOff();
@@ -128,6 +135,8 @@ void loop() // Start the main loop
             }
         }
         break;
+
+/*___________________________________________________________________________________________________*/
 
     case PASSWORD_CORRECT: // If the program is in the PASSWORD_CORRECT state
 
@@ -138,7 +147,9 @@ void loop() // Start the main loop
         green.turnOff();
         break;
 
-    case PASSWORD_INCORECT: // If the program is in the PASSWORD_INCORECT state
+/*___________________________________________________________________________________________________*/
+
+    case PASSWORD_INCORRECT: // If the program is in the PASSWORD_INCORRECT state
 
         red.turnOn();
         Serial.println("You are not Correct    Try again");
@@ -150,32 +161,38 @@ void loop() // Start the main loop
         state = ENTER_PASSWORD;
         break;
 
+/*___________________________________________________________________________________________________*/
+
     case OFF:
-        if ( blue.getState() || red.getState() || green.getState())
+        if (blue.getState() || red.getState() || green.getState()) // Checking if the pins are on
         {
             for (int i = 0; i < (pinCount + 1); i++) // Turn all of the pins off
             {
-            lightContainer[i].turnOff();
+                lightContainer[i].turnOff();
             }
         }
 
         white.turnOff();
-        white.blinkLight(200, 1000);
+        //white.blinkLight(200, 10000);
         currentKey = getKey();
         if (currentKey == 11) // If there is a keypress put it into the currentPassword list
-        { 
-                password.setIndexOfEntered(0);
-                white.turnOff();
+        {
+            password.setIndexOfEntered(0);
+            //white.turnOff();
 
-                state = START_UP;
-                break;
-            }
-    default:
+            state = START_UP;
+            break;
+        }
+
+/*___________________________________________________________________________________________________*/
+
+    default: // Empty Default Case
         break;
     }
-    
+
     //green.blinkLight(500); // Set pin 13 to HIGH (5v)
     //red.blinkLight(3000);
     //Serial.println(loopTime);
 #endif
+
 } // End the main loop

@@ -1,21 +1,27 @@
 #include "commonDecProject.h"
 
-Password::Password() { indexOfEntered = 0; }
+Password::Password()
+{
+    indexOfEntered = 0;
+}
 
 void Password::setIndexOfEntered(int numEntries)
 {
+
     indexOfEntered = numEntries;
 }
 
-void Password::setEnteredPassword(int imput)
+void Password::setEnteredPassword(int input)
 {
-    enteredPassword[indexOfEntered] = imput;
+
+    enteredPassword[indexOfEntered] = input;
     indexOfEntered++;
 }
 
-void Password::setCurrentPassword(int imput)
+void Password::setCurrentPassword(int input)
 {
-    currentPassword[indexOfEntered] = imput;
+
+    currentPassword[indexOfEntered] = input;
     indexOfEntered++;
 }
 
@@ -63,6 +69,4 @@ bool Password::passwordsMatch()
         }
     }
     return true;
-    
 }
-

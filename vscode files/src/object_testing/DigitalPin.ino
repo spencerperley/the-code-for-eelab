@@ -6,7 +6,7 @@ DigitalPin::DigitalPin(int pinNumC) // Constructor that sets the pin number
     pinNum = pinNumC;
     // sets the rest of the values so that they are predictible
     blinkTimer = 0;
-    blinkOcilator = false;
+    blinkOscillator = false;
     pinCount++;
     isOn = false;
 }
@@ -32,15 +32,15 @@ bool DigitalPin::getState() { return (isOn); } // Returns wether or not the ligh
 //Blinks light with an equivelent on and off period
 void DigitalPin::blinkLight(int blinkLength)
 {
-    //This code is important so that no delay() function is requiered
-    // witch makes it able to run sincronusly with other functions and methods.
+    //This code is important so that no delay() function is required
+    // witch makes it able to run synchronously with other functions and methods.
 
-    if (blinkTimer < (blinkLength / 2) && !blinkOcilator)
+    if (blinkTimer < (blinkLength / 2) && !blinkOscillator)
     {
         blinkTimer = blinkTimer + loopTime;
         this->turnOn();
     }
-    else if (blinkTimer < (blinkLength / 2) && blinkOcilator)
+    else if (blinkTimer < (blinkLength / 2) && blinkOscillator)
     {
         blinkTimer = blinkTimer + loopTime;
         this->turnOff();
@@ -48,18 +48,18 @@ void DigitalPin::blinkLight(int blinkLength)
     else
     {
         blinkTimer = 0;
-        blinkOcilator = !blinkOcilator;
+        blinkOscillator = !blinkOscillator;
     }
 }
 // Same code as the blinkLight coe but overloaded to include a duty cycle
 void DigitalPin::blinkLight(int onTime, int offTime){
 
-    if (blinkTimer < (onTime) && !blinkOcilator)
+    if (blinkTimer < (onTime) && !blinkOscillator)
     {
         blinkTimer = blinkTimer + loopTime;
         this->turnOn();
     }
-    else if (blinkTimer < (offTime) && blinkOcilator)
+    else if (blinkTimer < (offTime) && blinkOscillator)
     {
         blinkTimer = blinkTimer + loopTime;
         this->turnOff();
@@ -67,11 +67,11 @@ void DigitalPin::blinkLight(int onTime, int offTime){
     else
     {
         blinkTimer = 0;
-        blinkOcilator = !blinkOcilator;
+        blinkOscillator = !blinkOscillator;
     }
 }
 
-void DigitalPin::alocatePin() // Initializes a digital pin
+void DigitalPin::allocatePin() // Initializes a digital pin
 {
     pinMode(pinNum, OUTPUT);
 }
